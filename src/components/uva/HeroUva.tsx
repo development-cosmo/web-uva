@@ -248,7 +248,8 @@ export default function HeroUva() {
           playsInline
           poster="/images/plataformas_1.jpeg"
         >
-          {/* Ruta local lista para colocar tu propio video en public/videos/demo-uva-erp.mp4 */}
+          {/* Ruta local lista para colocar tu propio video en public/videos/ */}
+          <source src="/videos/demo-uva-erp-1.mp4" type="video/mp4" />
           <source src="/videos/demo-uva-erp.mp4" type="video/mp4" />
           {/* Video HD de respaldo mientras colocas tu archivo local */}
           <source
