@@ -1,0 +1,70 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import HeroUva from '@/components/uva/HeroUva';
+import TrustBanner from '@/components/uva/TrustBanner.astro';
+import ProductTabs from '@/components/uva/ProductTabs';
+import IndustrySolutions from '@/components/uva/IndustrySolutions.astro';
+import PricingCalculator from '@/components/uva/PricingCalculator';
+import AccountantsSection from '@/components/uva/AccountantsSection.astro';
+import TestimonialsSection from '@/components/uva/TestimonialsSection.astro';
+import FaqSection from '@/components/uva/FaqSection';
+import CtaBanner from '@/components/uva/CtaBanner.astro';
+
+const uvaErpSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'UVA ERP - Software Empresarial y Contable en Colombia',
+  operatingSystem: 'Cloud, Web, Windows, Android, iOS',
+  applicationCategory: 'ERPBusinessApplication',
+  offers: {
+    '@type': 'Offer',
+    price: '39900',
+    priceCurrency: 'COP',
+    priceValidUntil: '2026-12-31',
+  },
+  provider: {
+    '@type': 'Organization',
+    name: 'UVASOFT',
+    url: 'https://www.uvasoft.co/',
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.9',
+    ratingCount: '1850',
+  },
+};
+---
+
+<MainLayout
+  title="UVASOFT | UVA ERP - Software ERP Modular y de Facturación Electrónica en Colombia"
+  description="UVASOFT presenta UVA ERP: el software ERP modular y escalable de Colombia. Activa y paga solo lo que necesitas: contabilidad NIIF, nómina DIAN, inventarios, cartera, CRM y módulos para parqueaderos, restaurantes, ferreterías, droguerías y producción."
+  image="/images/plataformas_1.jpeg"
+  schema={uvaErpSchema}
+>
+  {/* 1. Hero Principal con Selector de Especialidades y Mockup UVA ERP */}
+  <HeroUva client:load />
+
+  {/* 2. Banner de Confianza y Sellos DIAN */}
+  <TrustBanner />
+
+  {/* 3. Pestañas Interactivas de Todos los Módulos Core y Sectores */}
+  <ProductTabs client:visible />
+
+  {/* 4. Sección Especializada por Industria (Restaurantes, Parqueaderos, Ferreterías, Droguerías, Producción) */}
+  <IndustrySolutions />
+
+  {/* 5. Selector de Planes y Precios Mensual / Anual en Pesos Colombianos */}
+  <PricingCalculator client:visible />
+
+  {/* 6. Especial para Contadores: Portal Gratuito UVA SOFT */}
+  <AccountantsSection />
+
+  {/* 7. Testimonios Reales por Sector en Colombia */}
+  <TestimonialsSection />
+
+  {/* 8. Preguntas Frecuentes (FAQ Interactivo) */}
+  <FaqSection client:visible />
+
+  {/* 9. Banner Final de Conversión a Prueba Gratuita */}
+  <CtaBanner />
+</MainLayout>

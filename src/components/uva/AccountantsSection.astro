@@ -1,0 +1,112 @@
+---
+import { Users, CheckCircle2, ArrowRight, ShieldCheck, Sparkles, Building2 } from 'lucide-react';
+import UvaLogo from './UvaLogo';
+
+const accountantBenefits = [
+  'Panel multicliente centralizado: Gestiona todas las empresas de tus clientes desde un único login.',
+  'Licencia 100% GRATUITA de por vida para el contador público y sus auxiliares.',
+  'Generación automática de formatos de Información Exógena DIAN listos para el prevalidador.',
+  'Auditoría y conciliación bancaria automática con cruce de facturación electrónica y cartera.',
+  'Comunidad de contadores de UVASOFT con capacitaciones en UVA ERP y actualizaciones tributarias semanales.',
+];
+---
+
+<section id="contadores" class="py-20 lg:py-28 bg-gradient-to-br from-indigo-950 via-indigo-900 to-indigo-950 text-white relative overflow-hidden">
+  <div class="absolute -right-20 top-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Lado Izquierdo: Copy -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-800/80 border border-indigo-700 text-indigo-200 text-xs font-bold">
+          <Sparkles class="w-4 h-4 text-indigo-300" />
+          <span>UVASOFT • Portal Contable en UVA ERP</span>
+        </div>
+
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
+          ¿Eres Contador? Administra a todos tus clientes <span class="text-indigo-300">completamente GRATIS</span>
+        </h2>
+
+        <p class="text-base sm:text-lg text-indigo-100/90 leading-relaxed max-w-2xl">
+          Con <strong>UVA ERP</strong> olvídate de perseguir facturas o conciliar comprobantes manualmente a fin de mes. Revisa los libros contables, inventarios, compras y nómina electrónica de cada cliente en tiempo real y descarga medios magnéticos en minutos.
+        </p>
+
+        <!-- Lista de Beneficios -->
+        <div class="space-y-3 pt-2">
+          {accountantBenefits.map((benefit) => (
+            <div class="flex items-start gap-3">
+              <CheckCircle2 class="w-5 h-5 text-indigo-400 shrink-0 mt-0.5" />
+              <span class="text-sm text-indigo-100 font-medium leading-relaxed">{benefit}</span>
+            </div>
+          ))}
+        </div>
+
+        <!-- Botones CTA -->
+        <div class="pt-6 flex flex-col sm:flex-row gap-4">
+          <a
+            href="#registro"
+            class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-white text-indigo-950 font-black text-sm hover:bg-indigo-50 transition shadow-xl group"
+          >
+            <span>Crear cuenta de Contador Gratis</span>
+            <ArrowRight class="w-4 h-4 text-indigo-700 group-hover:translate-x-1 transition-transform" />
+          </a>
+          <a
+            href="#precios"
+            class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl border border-indigo-700 text-white font-bold text-sm hover:bg-indigo-800/60 transition"
+          >
+            Beneficios para Firmas Contables
+          </a>
+        </div>
+      </div>
+
+      <!-- Lado Derecho: Panel Multicliente Mockup -->
+      <div class="lg:col-span-5">
+        <div class="bg-indigo-900/80 backdrop-blur-md rounded-3xl p-6 sm:p-7 border border-indigo-700/80 shadow-2xl space-y-4">
+          
+          <div class="flex items-center justify-between pb-3 border-b border-indigo-800">
+            <div class="flex items-center gap-3">
+              <UvaLogo className="w-10 h-11 shrink-0" />
+              <div>
+                <p class="text-xs font-bold text-white">Panel Contador Asociado</p>
+                <p class="text-[10px] text-indigo-300">Dr. Mauricio Cárdenas • TP: 219842-T</p>
+              </div>
+            </div>
+            <span class="text-[10px] font-extrabold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-0.5 rounded-full">
+              Sincronizado
+            </span>
+          </div>
+
+          <p class="text-xs text-indigo-200 font-semibold">Empresas en Gestión con UVA ERP:</p>
+
+          <div class="space-y-2.5">
+            {[
+              { name: 'Ferretería El Tornillo Dorado', sector: 'Ferretería', status: 'Kardex & Exógena OK', color: 'text-emerald-400' },
+              { name: 'Restaurante & Bar La Fogata', sector: 'Gastronomía', status: 'Cierre de Caja Diario', color: 'text-indigo-300' },
+              { name: 'Droguería San Jorge Principal', sector: 'Farmacia', status: 'Lotes e INVIMA al día', color: 'text-emerald-400' },
+              { name: 'Parqueadero Central Plaza', sector: 'Parqueaderos', status: 'Turno Activo', color: 'text-indigo-300' },
+            ].map((client) => (
+              <div class="p-3 rounded-xl bg-indigo-950/70 border border-indigo-800/70 flex items-center justify-between text-xs hover:border-indigo-600 transition">
+                <div>
+                  <p class="font-bold text-white">{client.name}</p>
+                  <p class="text-[10px] text-indigo-300">{client.sector}</p>
+                </div>
+                <div class="text-right">
+                  <span class={`text-[10px] font-bold block ${client.color}`}>{client.status}</span>
+                  <span class="text-[9px] text-indigo-400">Ver contabilidad</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div class="p-3.5 rounded-2xl bg-indigo-800/60 border border-indigo-700 text-xs flex items-center justify-between">
+            <span class="text-indigo-200">Soporte Tributario UVASOFT:</span>
+            <span class="font-bold text-white">Línea Prioritaria 24/7</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

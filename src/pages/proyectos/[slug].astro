@@ -1,0 +1,116 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '@/layouts/MainLayout.astro';
+import { ArrowLeft, CheckCircle2, TrendingUp, Calendar, UserCheck } from 'lucide-react';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+
+const projectSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: project.data.title,
+  description: project.data.description,
+  creator: {
+    '@type': 'Organization',
+    name: 'UVA Tech Solutions',
+  },
+  keywords: project.data.tags.join(', '),
+};
+---
+
+<MainLayout
+  title={`Caso de Estudio: ${project.data.title}`}
+  description={project.data.description}
+  image={project.data.image}
+  schema={projectSchema}
+>
+  <div class="py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+      <a
+        href="/proyectos/"
+        class="inline-flex items-center gap-2 text-sm text-primary-600 hover:text-primary-700 font-medium mb-8 group"
+      >
+        <ArrowLeft class="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+        Volver a Proyectos
+      </a>
+
+      <div class="flex items-center gap-3 mb-4">
+        <span class="px-3.5 py-1 bg-accent-50 text-accent-700 text-xs font-semibold rounded-full uppercase tracking-wider">
+          {project.data.category}
+        </span>
+        <span class="text-xs text-gray-400">• Año {project.data.year}</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight mb-6">
+        {project.data.title}
+      </h1>
+      <p class="text-xl text-gray-600 leading-relaxed">
+        {project.data.description}
+      </p>
+
+      <!-- Ficha de Datos Clave -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 p-6 bg-gray-50 rounded-2xl border border-gray-100">
+        <div>
+          <span class="text-xs text-gray-400 block font-medium">Cliente</span>
+          <span class="text-sm font-bold text-gray-900">{project.data.client}</span>
+        </div>
+        <div>
+          <span class="text-xs text-gray-400 block font-medium">Año de Lanzamiento</span>
+          <span class="text-sm font-bold text-gray-900">{project.data.year}</span>
+        </div>
+        <div class="col-span-2">
+          <span class="text-xs text-gray-400 block font-medium mb-1">Stack Tecnológico</span>
+          <div class="flex flex-wrap gap-1">
+            {project.data.tags.map((t) => (
+              <span class="text-[11px] bg-white border border-gray-200 px-2 py-0.5 rounded font-medium text-gray-700">
+                {t}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Imagen Principal -->
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+      <img
+        src={project.data.image}
+        alt={project.data.title}
+        class="w-full h-80 md:h-[450px] object-cover rounded-3xl shadow-xl"
+      />
+    </div>
+
+    <!-- Métricas del Caso -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+      <div class="p-8 rounded-3xl bg-primary-900 text-white shadow-lg">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-accent-400 mb-6 flex items-center gap-2">
+          <TrendingUp class="w-4 h-4" />
+          Métricas y Resultados Obtenidos
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {project.data.metrics.map((m) => (
+            <div class="bg-primary-800/60 p-4 rounded-xl border border-primary-700">
+              <span class="block text-3xl font-extrabold text-white mb-1">{m.value}</span>
+              <span class="block text-xs text-primary-200 font-medium">{m.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Contenido Markdown -->
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-lg prose-indigo">
+      <Content />
+    </div>
+  </div>
+</MainLayout>
+

@@ -1,0 +1,85 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+import { ArrowRight } from 'lucide-react';
+
+const projects = await getCollection('projects');
+---
+
+<MainLayout
+  title="Portafolio y Casos de Éxito"
+  description="Conoce proyectos reales desarrollados con Astro, TypeScript y React. Resultados medibles de rendimiento y conversión."
+>
+  <div class="py-20 md:py-28 bg-gradient-to-b from-primary-50/40 via-white to-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-16">
+        <span class="px-3.5 py-1.5 rounded-full bg-accent-100 text-accent-700 text-xs font-bold uppercase tracking-wider inline-block mb-4">
+          Portafolio de Casos
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight mb-6">
+          Impacto medible en proyectos de alta complejidad.
+        </h1>
+        <p class="text-lg text-gray-600 leading-relaxed">
+          Cada caso de estudio documenta los desafíos arquitectónicos, las tecnologías seleccionadas y el retorno de inversión obtenido.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projects.map((project) => (
+          <article class="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
+            <div class="relative overflow-hidden h-56">
+              <img
+                src={project.data.image}
+                alt={project.data.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-gray-800">
+                {project.data.category}
+              </div>
+            </div>
+
+            <div class="p-8 flex flex-col justify-between flex-grow">
+              <div>
+                <p class="text-xs text-gray-400 font-medium mb-1">{project.data.client} • {project.data.year}</p>
+                <h2 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors">
+                  {project.data.title}
+                </h2>
+                <p class="text-xs text-gray-600 leading-relaxed mb-6">
+                  {project.data.description}
+                </p>
+
+                <!-- Tags de tecnologías -->
+                <div class="flex flex-wrap gap-1.5 mb-6">
+                  {project.data.tags.map((tag) => (
+                    <span class="px-2.5 py-1 bg-gray-50 border border-gray-100 rounded-md text-[11px] text-gray-600 font-medium">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <!-- Métricas -->
+                <div class="grid grid-cols-2 gap-3 py-3 mb-6 border-t border-gray-100 bg-gray-50/60 rounded-xl px-3">
+                  {project.data.metrics.slice(0, 2).map((m) => (
+                    <div>
+                      <span class="block text-base font-extrabold text-primary-600">{m.value}</span>
+                      <span class="block text-[10px] uppercase tracking-wider text-gray-500 font-medium">{m.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <a
+                href={`/proyectos/${project.slug}/`}
+                class="inline-flex items-center justify-between text-xs font-bold text-primary-600 group-hover:text-primary-700 pt-2"
+              >
+                <span>Leer caso completo</span>
+                <ArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</MainLayout>
+

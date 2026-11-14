@@ -1,0 +1,126 @@
+---
+import MainLayout from './MainLayout.astro';
+import { ArrowLeft, CheckCircle2, Award, Zap, ArrowRight } from 'lucide-react';
+
+export interface Props {
+  title: string;
+  description: string;
+  category: string;
+  features: string[];
+  benefits: string[];
+  deliverables: string[];
+  priceRange?: string;
+}
+
+const { title, description, category, features, benefits, deliverables, priceRange } = Astro.props;
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: title,
+  description: description,
+  provider: {
+    '@type': 'Organization',
+    name: 'UVA Tech Solutions',
+    url: 'https://www.tudominio.com',
+  },
+  category: category,
+  areaServed: 'Worldwide',
+};
+---
+
+<MainLayout
+  title={title}
+  description={description}
+  schema={serviceSchema}
+>
+  <div class="py-16 md:py-24">
+    <!-- Header Hero -->
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+      <a
+        href="/servicios/"
+        class="inline-flex items-center gap-2 text-sm text-primary-600 hover:text-primary-700 font-medium mb-8 group"
+      >
+        <ArrowLeft class="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+        Catálogo de Servicios
+      </a>
+
+      <div class="flex items-center gap-3 mb-4">
+        <span class="px-3 py-1 bg-primary-50 text-primary-700 text-xs font-semibold rounded-full uppercase tracking-wider">
+          {category}
+        </span>
+        {priceRange && (
+          <span class="text-xs text-gray-500 bg-gray-100 px-3 py-1 rounded-full font-medium">
+            Rango: {priceRange}
+          </span>
+        )}
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight mb-6">
+        {title}
+      </h1>
+      <p class="text-xl text-gray-600 max-w-3xl leading-relaxed">
+        {description}
+      </p>
+    </div>
+
+    <!-- Contenido y Especificaciones -->
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
+        <!-- Cuerpo Principal -->
+        <div class="lg:col-span-2 prose prose-indigo max-w-none">
+          <slot />
+
+          <!-- Entregables -->
+          <div class="not-prose mt-12 p-8 rounded-2xl bg-gray-50 border border-gray-100">
+            <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <Award class="w-5 h-5 text-primary-600" />
+              Entregables del Servicio
+            </h3>
+            <ul class="space-y-3">
+              {deliverables.map((item) => (
+                <li class="flex items-start gap-3 text-sm text-gray-700">
+                  <CheckCircle2 class="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sidebar de Características -->
+        <div class="space-y-8">
+          <div class="p-6 rounded-2xl bg-white border border-gray-200 shadow-sm">
+            <h3 class="text-base font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <Zap class="w-4 h-4 text-accent-500" />
+              Capacidades Clave
+            </h3>
+            <ul class="space-y-2.5">
+              {features.map((f) => (
+                <li class="flex items-center gap-2 text-xs font-medium text-gray-700">
+                  <div class="w-1.5 h-1.5 rounded-full bg-primary-600"></div>
+                  {f}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-gradient-to-br from-primary-600 to-primary-900 text-white">
+            <h3 class="text-lg font-bold mb-2">¿Necesitas esta solución?</h3>
+            <p class="text-xs text-primary-100 mb-6">
+              Agenda una llamada técnica con nuestros arquitectos y recibe una propuesta en 48 horas.
+            </p>
+            <a
+              href="/contacto/"
+              class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white text-primary-700 text-sm font-semibold rounded-lg hover:bg-primary-50 transition"
+            >
+              Consultar Disponibilidad
+              <ArrowRight class="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</MainLayout>
+

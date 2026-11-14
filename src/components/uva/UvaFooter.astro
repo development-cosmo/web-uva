@@ -1,0 +1,169 @@
+---
+import {
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
+  Youtube,
+  Globe,
+  Phone,
+  Mail,
+  ShieldCheck,
+  Building2,
+  Sparkles
+} from 'lucide-react';
+import UvaLogo from './UvaLogo';
+
+const currentYear = new Date().getFullYear();
+
+const colombianCities = [
+  'Bogotá D.C.',
+  'Medellín',
+  'Cali',
+  'Barranquilla',
+  'Bucaramanga',
+  'Pereira',
+  'Manizales',
+  'Cartagena',
+  'Ibagué',
+  'Cúcuta',
+];
+---
+
+<footer class="bg-indigo-950 text-indigo-200 pt-16 pb-12 border-t border-indigo-900/60">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Header Footer: Logo, Teléfonos y Redes -->
+    <div class="flex flex-col lg:flex-row lg:items-center justify-between pb-12 mb-12 border-b border-indigo-900/60 gap-8">
+      <div class="space-y-3">
+        <a href="/" class="flex items-center gap-3 group">
+          <UvaLogo className="w-11 h-12 shrink-0 group-hover:scale-105 transition-transform" />
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-2xl font-black text-white tracking-tight">UVA<span class="text-indigo-400">SOFT</span></span>
+              <span class="text-[10px] font-mono font-extrabold uppercase tracking-wider bg-indigo-600 text-white px-2 py-0.5 rounded-full">
+                Producto: UVA ERP
+              </span>
+            </div>
+            <span class="block text-[10px] font-extrabold uppercase tracking-wider text-indigo-400">
+              Usability * Velocity * Automatizations
+            </span>
+          </div>
+        </a>
+        <p class="text-xs text-indigo-300 max-w-sm leading-relaxed">
+          <strong>UVASOFT</strong> es la empresa creadora de <strong>UVA ERP</strong>, el software ERP modular y escalable en la nube: activa únicamente los módulos de contabilidad, facturación DIAN, inventarios, nómina, cartera o las especialidades de tu sector.
+        </p>
+      </div>
+
+      <!-- Teléfono y Contacto Directo -->
+      <div class="flex flex-wrap items-center gap-6 text-xs text-indigo-200">
+        <div class="flex items-center gap-2">
+          <Phone class="w-4 h-4 text-indigo-400" />
+          <span>Atención Colombia: <strong class="text-white">(601) 745 8080 / 300 912 4040</strong></span>
+        </div>
+        <div class="flex items-center gap-2">
+          <Mail class="w-4 h-4 text-indigo-400" />
+          <span>ventas@uvasoft.co • soporte@uvasoft.co</span>
+        </div>
+      </div>
+
+      <!-- Redes Sociales -->
+      <div class="flex items-center gap-3">
+        <a href="https://linkedin.com" target="_blank" rel="noopener" class="w-9 h-9 rounded-xl bg-indigo-900/80 hover:bg-indigo-800 text-indigo-300 hover:text-white flex items-center justify-center transition" aria-label="LinkedIn">
+          <Linkedin class="w-4 h-4" />
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="w-9 h-9 rounded-xl bg-indigo-900/80 hover:bg-indigo-800 text-indigo-300 hover:text-white flex items-center justify-center transition" aria-label="Instagram">
+          <Instagram class="w-4 h-4" />
+        </a>
+        <a href="https://facebook.com" target="_blank" rel="noopener" class="w-9 h-9 rounded-xl bg-indigo-900/80 hover:bg-indigo-800 text-indigo-300 hover:text-white flex items-center justify-center transition" aria-label="Facebook">
+          <Facebook class="w-4 h-4" />
+        </a>
+        <a href="https://youtube.com" target="_blank" rel="noopener" class="w-9 h-9 rounded-xl bg-indigo-900/80 hover:bg-indigo-800 text-indigo-300 hover:text-white flex items-center justify-center transition" aria-label="YouTube">
+          <Youtube class="w-4 h-4" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Columnas de Enlaces -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pb-12 mb-12 border-b border-indigo-900/60 text-xs">
+      
+      <!-- Módulos Core -->
+      <div>
+        <p class="font-black uppercase tracking-wider text-white mb-4">Módulos Core ERP</p>
+        <ul class="space-y-2.5 text-indigo-300">
+          <li><a href="#modulos" class="hover:text-white transition">Contabilidad NIIF & PUC</a></li>
+          <li><a href="#modulos" class="hover:text-white transition">Facturación Electrónica DIAN</a></li>
+          <li><a href="#modulos" class="hover:text-white transition">Inventarios & Multi-Bodega</a></li>
+          <li><a href="#modulos" class="hover:text-white transition">Nómina Electrónica & PILA</a></li>
+          <li><a href="#modulos" class="hover:text-white transition">Proveedores & Cuentas x Pagar</a></li>
+          <li><a href="#modulos" class="hover:text-white transition">Cartera & Cuentas x Cobrar</a></li>
+          <li><a href="#modulos" class="hover:text-white transition">CRM Comercial & Cotizaciones</a></li>
+          <li><a href="#modulos" class="hover:text-white transition">Reportes Financieros & BI</a></li>
+        </ul>
+      </div>
+
+      <!-- Módulos Especializados -->
+      <div>
+        <p class="font-black uppercase tracking-wider text-white mb-4">Sectores Especializados</p>
+        <ul class="space-y-2.5 text-indigo-300">
+          <li><a href="#parqueaderos" class="hover:text-white transition font-bold text-indigo-200">ERP para Parqueaderos</a></li>
+          <li><a href="#restaurantes" class="hover:text-white transition font-bold text-indigo-200">ERP para Restaurantes & Bares</a></li>
+          <li><a href="#ferreterias" class="hover:text-white transition font-bold text-indigo-200">ERP para Ferreterías</a></li>
+          <li><a href="#droguerias" class="hover:text-white transition font-bold text-indigo-200">ERP para Droguerías & Farmacias</a></li>
+          <li><a href="#produccion" class="hover:text-white transition font-bold text-indigo-200">ERP para Producción & Fábricas</a></li>
+          <li><a href="#modulos" class="hover:text-white transition">Marketplace & Catálogos Digitales</a></li>
+          <li><a href="#contadores" class="hover:text-white transition font-semibold text-white">Portal para Contadores (Gratis)</a></li>
+        </ul>
+      </div>
+
+      <!-- Recursos & Soporte -->
+      <div>
+        <p class="font-black uppercase tracking-wider text-white mb-4">Recursos & Educación</p>
+        <ul class="space-y-2.5 text-indigo-300">
+          <li><a href="/blog/" class="hover:text-white transition">Blog Tributario & Financiero</a></li>
+          <li><a href="#calendario" class="hover:text-white transition">Calendario Tributario DIAN 2025</a></li>
+          <li><a href="#capacitaciones" class="hover:text-white transition">Capacitaciones & Webinars</a></li>
+          <li><a href="#manuales" class="hover:text-white transition">Centro de Ayuda & Manuales</a></li>
+          <li><a href="#api" class="hover:text-white transition">Documentación API Desarrolladores</a></li>
+          <li><a href="/llms.txt" class="hover:text-indigo-100 transition text-indigo-300">Contexto IA (llms.txt)</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal & DIAN -->
+      <div>
+        <p class="font-black uppercase tracking-wider text-white mb-4">UVASOFT • Legal</p>
+        <ul class="space-y-2.5 text-indigo-300">
+          <li><span class="text-white font-semibold flex items-center gap-1.5"><ShieldCheck class="w-3.5 h-3.5 text-emerald-400" /> Habilitación DIAN Vigente</span></li>
+          <li><a href="#terminos" class="hover:text-white transition">Términos del Servicio</a></li>
+          <li><a href="#privacidad" class="hover:text-white transition">Política de Protección de Datos</a></li>
+          <li><a href="#seguridad" class="hover:text-white transition">Seguridad en la Nube y Backups</a></li>
+          <li><a href="#acuerdo" class="hover:text-white transition">Acuerdo de Nivel de Servicio (SLA)</a></li>
+          <li><a href="/sitemap-index.xml" class="hover:text-white transition">Mapa del Sitio (Sitemap XML)</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Cobertura en Colombia -->
+    <div class="mb-10">
+      <p class="text-[11px] font-extrabold uppercase tracking-wider text-indigo-400 mb-3 flex items-center gap-1.5">
+        <Building2 class="w-3.5 h-3.5" />
+        <span>Presencia y Cobertura Nacional en Colombia:</span>
+      </p>
+      <div class="flex flex-wrap items-center gap-2">
+        {colombianCities.map((city) => (
+          <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-indigo-900/60 text-indigo-300 border border-indigo-800/60">
+            {city}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="flex flex-col sm:flex-row items-center justify-between text-[11px] text-indigo-400 gap-4 pt-6 border-t border-indigo-900/40">
+      <p>© {currentYear} UVASOFT S.A.S. Todos los derechos reservados. NIT: 901.842.110-4. Empresa desarrolladora del software UVA ERP en Colombia.</p>
+      <p class="text-indigo-400">Producto Oficial: UVA ERP (Contabilidad, Facturación, Inventario, Nómina y Especialidades)</p>
+    </div>
+
+  </div>
+</footer>

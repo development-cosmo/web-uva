@@ -1,0 +1,85 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+import { ArrowRight, Code2, Cloud, Search, Cpu, CheckCircle2 } from 'lucide-react';
+
+const services = await getCollection('services');
+
+const iconMap = {
+  Code2,
+  Cloud,
+  Search,
+  Cpu,
+};
+---
+
+<MainLayout
+  title="Catálogo de Servicios de Ingeniería Web"
+  description="Soluciones avanzadas en desarrollo frontend con Astro y React, arquitectura cloud serverless y optimización GEO para motores de IA."
+>
+  <div class="py-20 md:py-28 bg-gradient-to-b from-primary-50/40 via-white to-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-16">
+        <span class="px-3.5 py-1.5 rounded-full bg-primary-100 text-primary-700 text-xs font-bold uppercase tracking-wider inline-block mb-4">
+          Servicios Especializados
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight mb-6">
+          Ingeniería de vanguardia para plataformas exigentes.
+        </h1>
+        <p class="text-lg text-gray-600 leading-relaxed">
+          Diseñamos soluciones personalizadas que resuelven los problemas reales de velocidad, indexabilidad y escalabilidad de tu negocio digital.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {services.map((service) => {
+          const IconComponent = iconMap[service.data.icon as keyof typeof iconMap] || Code2;
+          return (
+            <div class="p-8 sm:p-10 rounded-3xl bg-white border border-gray-100 shadow-sm hover:shadow-xl hover:border-primary-100 transition-all duration-300 flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-6">
+                  <div class="w-14 h-14 rounded-2xl bg-primary-50 text-primary-600 flex items-center justify-center group-hover:bg-primary-600 group-hover:text-white transition-colors duration-300">
+                    <IconComponent class="w-7 h-7" />
+                  </div>
+                  {service.data.priceRange && (
+                    <span class="text-xs font-bold px-3 py-1 bg-gray-50 border border-gray-100 rounded-full text-gray-500">
+                      {service.data.priceRange}
+                    </span>
+                  )}
+                </div>
+
+                <span class="text-xs font-bold uppercase tracking-wider text-primary-600 mb-2 block">
+                  {service.data.category}
+                </span>
+                <h2 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-primary-600 transition-colors">
+                  {service.data.title}
+                </h2>
+                <p class="text-sm text-gray-600 leading-relaxed mb-6">
+                  {service.data.description}
+                </p>
+
+                <div class="space-y-2.5 mb-8">
+                  {service.data.features.slice(0, 3).map((feat) => (
+                    <div class="flex items-center gap-2.5 text-xs text-gray-700">
+                      <CheckCircle2 class="w-4 h-4 text-green-500 shrink-0" />
+                      <span>{feat}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <a
+                href={`/servicios/${service.slug}/`}
+                class="inline-flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-gray-50 hover:bg-primary-600 hover:text-white text-gray-800 text-sm font-semibold transition group-hover:shadow"
+              >
+                Ver alcance y entregables
+                <ArrowRight class="w-4 h-4" />
+              </a>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</MainLayout>
+

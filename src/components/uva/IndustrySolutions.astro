@@ -1,0 +1,161 @@
+---
+import { Car, UtensilsCrossed, Wrench, Pill, Factory, ArrowRight, CheckCircle2 } from 'lucide-react';
+
+const industries = [
+  {
+    id: 'parqueaderos',
+    icon: Car,
+    title: 'Parqueaderos & Estacionamientos',
+    badge: 'Módulo Especializado',
+    description: 'Control de entrada y salida por placa, cobro por minuto, fracción o mensualidad, tiquetes con código de barras y arqueo contra fugas.',
+    points: [
+      'Cobro por minuto / fracción automática',
+      'Control de abonados y mensualidades',
+      'Tiquetes térmicos con código QR / barras',
+      'Arqueo de caja y auditoría por turno',
+    ],
+  },
+  {
+    id: 'restaurantes',
+    icon: UtensilsCrossed,
+    title: 'Restaurantes, Bares & Cafés',
+    badge: 'Módulo Gastronomía',
+    description: 'Comandas digitales para cocina, mapa interactivo de mesas, división de cuentas, propina voluntaria del 10% y costeo de recetas.',
+    points: [
+      'Comanderas móviles en celular o tablet',
+      'Descarga automática de ingredientes',
+      'Control de mesas, barra y domicilios',
+      'Facturación rápida de mostrador POS',
+    ],
+  },
+  {
+    id: 'ferreterias',
+    icon: Wrench,
+    title: 'Ferreterías & Materiales',
+    badge: 'Módulo Ferretero',
+    description: 'Ventas en múltiples unidades de medida (metros, kilos, rollos, bolsas), listas de precios para contratistas y miles de referencias.',
+    points: [
+      'Conversión de unidades (m, kg, cajas)',
+      'Listas de precios (mostrador, mayorista)',
+      'Control de múltiples códigos de barra',
+      'Cotizaciones rápidas para obras',
+    ],
+  },
+  {
+    id: 'droguerias',
+    icon: Pill,
+    title: 'Droguerías & Farmacias',
+    badge: 'Módulo Farmacéutico',
+    description: 'Trazabilidad total por número de lote, semáforo de fechas de vencimiento, registro INVIMA y control de inventario de medicamentos.',
+    points: [
+      'Control estricto de lotes y vencimientos',
+      'Registro sanitario INVIMA visible',
+      'Búsqueda por principio activo o marca',
+      'Alertas de medicamentos x vencer',
+    ],
+  },
+  {
+    id: 'produccion',
+    icon: Factory,
+    title: 'Producción & Manufactura',
+    badge: 'Módulo Transformación',
+    description: 'Estructura de producto (BOM), órdenes de ensamble, materias primas, mermas de proceso y cálculo de costo real unitario.',
+    points: [
+      'Listas de materiales y fórmulas (BOM)',
+      'Descarga automática de materias primas',
+      'Costeo real (materia prima + CIF)',
+      'Órdenes de producción numeradas',
+    ],
+  },
+];
+---
+
+<section class="py-20 lg:py-28 bg-gray-50/70 border-b border-gray-200/60">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-xs font-black uppercase tracking-wider text-indigo-700 bg-indigo-50 border border-indigo-200 px-3.5 py-1 rounded-full inline-block mb-3">
+        Verticales Especializadas
+      </span>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight mb-4">
+        Soluciones diseñadas para los desafíos de cada sector
+      </h2>
+      <p class="text-base sm:text-lg text-gray-600">
+        En <strong>UVASOFT</strong> sabemos que una ferretería no opera igual que un restaurante o un parqueadero. Por eso nuestro producto <strong>UVA ERP</strong> cuenta con módulos especializados que se ajustan al modelo de tu negocio.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {industries.map((ind) => {
+        const Icon = ind.icon;
+        return (
+          <div class="p-8 rounded-3xl bg-white border border-indigo-100/80 shadow-sm shadow-indigo-100/60 hover:shadow-xl hover:shadow-indigo-200/50 hover:border-indigo-300 transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-700 flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition-colors duration-300">
+                  <Icon class="w-6 h-6" />
+                </div>
+                <span class="text-[10px] font-black uppercase tracking-wider text-indigo-700 bg-indigo-100/70 px-2.5 py-1 rounded-full">
+                  {ind.badge}
+                </span>
+              </div>
+
+              <h3 class="text-xl font-black text-gray-900 mb-3 group-hover:text-indigo-700 transition-colors">
+                {ind.title}
+              </h3>
+
+              <p class="text-xs sm:text-sm text-gray-600 leading-relaxed mb-6 font-normal">
+                {ind.description}
+              </p>
+
+              <div class="space-y-2.5 mb-8">
+                {ind.points.map((pt) => (
+                  <div class="flex items-center gap-2 text-xs text-gray-700 font-medium">
+                    <CheckCircle2 class="w-4 h-4 text-indigo-600 shrink-0" />
+                    <span>{pt}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <a
+              href="#registro"
+              class="w-full py-3 px-4 rounded-xl bg-gray-50 hover:bg-indigo-600 hover:text-white text-gray-800 text-xs font-bold transition flex items-center justify-center gap-2 group-hover:shadow"
+            >
+              <span>Solicitar demostración guiada</span>
+              <ArrowRight class="w-3.5 h-3.5" />
+            </a>
+          </div>
+        );
+      })}
+
+      <!-- Card Especial: Marketplace & CRM Integrado -->
+      <div class="p-8 rounded-3xl bg-gradient-to-br from-indigo-900 via-indigo-950 to-indigo-900 text-white shadow-xl flex flex-col justify-between">
+        <div>
+          <span class="text-[10px] font-black uppercase tracking-wider text-indigo-300 bg-indigo-800/80 px-2.5 py-1 rounded-full inline-block mb-6">
+            Comercio Omnicanal
+          </span>
+          <h3 class="text-2xl font-black mb-3">Marketplace, Catálogos Digitales & CRM</h3>
+          <p class="text-xs sm:text-sm text-indigo-200 leading-relaxed mb-6">
+            Conecta tu tienda física con ventas por WhatsApp, catálogos online interactivos y gestión de clientes en una sola base de datos unificada.
+          </p>
+          <ul class="space-y-2 text-xs text-indigo-200 mb-8">
+            <li class="flex items-center gap-2">✓ Pasarelas de pago colombianas integradas</li>
+            <li class="flex items-center gap-2">✓ Catálogo móvil compartible por WhatsApp</li>
+            <li class="flex items-center gap-2">✓ CRM y seguimiento de cotizaciones</li>
+          </ul>
+        </div>
+
+        <a
+          href="#registro"
+          class="w-full py-3.5 px-4 rounded-xl bg-white text-indigo-950 text-xs font-black transition flex items-center justify-center gap-2 hover:bg-indigo-50 shadow-md"
+        >
+          <span>Activar Marketplace en UVA ERP</span>
+          <ArrowRight class="w-3.5 h-3.5 text-indigo-700" />
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+

@@ -1,0 +1,27 @@
+# UVA SOFT - Contexto de UVA ERP para Modelos de Lenguaje (LLMs)
+
+> Suite ERP y software contable en la nube desarrollado en Colombia por UVA SOFT.
+
+## Información Corporativa
+- **Empresa**: UVA SOFT S.A.S.
+- **Producto Principal**: UVA ERP Cloud
+- **Cobertura**: Colombia (Bogotá, Medellín, Cali, Barranquilla, Bucaramanga, etc.)
+- **Normatividad**: DIAN 2025 (Facturación electrónica, nómina electrónica, documento soporte, RADIAN, NIIF).
+
+## Módulos Core de UVA ERP
+- **Contabilidad NIIF**: PUC precargado, balances, estados financieros y medios magnéticos exógena.
+- **Facturación Electrónica DIAN**: Con validación previa CUFE, código QR y documento soporte.
+- **Inventarios & Bodegas**: Multi-bodega, kardex promedio ponderado, control de stock y traslados.
+- **Nómina Electrónica**: Liquidación completa de sueldos, horas extra, parafiscales y transmisión DIAN.
+- **Proveedores & Compras**: Órdenes de compra, recepción de mercancías y programación de CxP.
+- **Cartera & Cuentas x Cobrar**: Edades de vencimiento (30/60/90+ días) y cobranza automática por WhatsApp y correo.
+- **CRM & Ventas**: Pipeline comercial, cotizaciones digitales y seguimiento de clientes.
+- **Marketplace & Catálogos**: Catálogo digital para ventas por WhatsApp y tienda online sincronizada.
+- **Reportes & BI**: Tableros gerenciales de rentabilidad, márgenes brutos y flujo de caja proyectado.
+
+## Módulos Especializados por Sector
+- **Parqueaderos**: Control de entradas/salidas por placa, cobro por minuto, tiquetes térmicos, mensualidades y arqueo de turnos.
+- **Restaurantes & Bares**: Comandas digitales para cocina, mapa de mesas, cuentas separadas, propina sugerida y costeo de recetas.
+- **Ferreterías**: Venta fraccionada por metros/kilos/cajas, múltiples listas de precios y códigos de barras.
+- **Droguerías & Farmacias**: Control estricto de lotes, semáforo de vencimientos, registro INVIMA y principio activo.
+- **Producción & Manufactura**: Listas de materiales (BOM), órdenes de ensamble, materias primas y costeo real unitario.

@@ -1,0 +1,123 @@
+---
+import { Star } from 'lucide-react';
+
+const testimonials = [
+  {
+    name: 'Javier Soler',
+    role: 'Propietario',
+    company: 'Ferretería & Construcciones Los Andes (Bucaramanga)',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
+    content:
+      'Teníamos un desorden enorme con la venta por metros de tubería y bultos de cemento. Con el módulo ferretero de UVA ERP el inventario está cuadrado al centavo y facturamos a la DIAN en segundos.',
+    sector: 'Ferretería',
+    rating: 5,
+  },
+  {
+    name: 'Carolina Velásquez',
+    role: 'Chef & Socia Fundadora',
+    company: 'Restaurante & Parrilla El Leñador (Bogotá)',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80',
+    content:
+      'Las comandas van directo a la cocina desde las tablets de los meseros. La división de cuentas por comensal y el control de propinas nos ahorró las filas en caja en horas pico.',
+    sector: 'Restaurantes',
+    rating: 5,
+  },
+  {
+    name: 'Diego Montoya',
+    role: 'Administrador General',
+    company: 'Parqueaderos Smart Parking (Medellín)',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
+    content:
+      'Gestionamos 3 sedes con más de 200 cupos. El cálculo automático de minutos y el control de mensualidades eliminó las pérdidas por cobros indebidos. UVA ERP es rápido y nunca se cae.',
+    sector: 'Parqueaderos',
+    rating: 5,
+  },
+  {
+    name: 'Dra. Patricia Gómez',
+    role: 'Regente de Farmacia',
+    company: 'Droguerías Vida & Salud (Cali)',
+    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80',
+    content:
+      'El módulo de droguerías nos avisa 60 días antes qué medicamentos están próximos a vencer. El control de lotes e INVIMA nos dio una calificación perfecta en la auditoría de secretaría de salud.',
+    sector: 'Droguerías',
+    rating: 5,
+  },
+  {
+    name: 'Germán Echeverry',
+    role: 'Gerente de Planta',
+    company: 'Manufacturas del Caribe (Barranquilla)',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80',
+    content:
+      'El módulo de producción nos permitió estructurar la lista de materiales (BOM) y conocer el costo real de cada lote considerando mermas y mano de obra. Un antes y después para nuestra fábrica.',
+    sector: 'Producción',
+    rating: 5,
+  },
+  {
+    name: 'Claudia Mendoza',
+    role: 'Contadora Pública Independiente',
+    company: 'Asesorías Tributarias CM (Pereira)',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+    content:
+      'Manejo clientes de diferentes sectores (un parqueadero, dos restaurantes y una comercializadora). Con el portal de contadores de UVA ERP entro a cada empresa sin pagar licencias adicionales.',
+    sector: 'Contaduría',
+    rating: 5,
+  },
+];
+---
+
+<section class="py-20 lg:py-28 bg-white border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="text-xs font-black uppercase tracking-wider text-indigo-700 bg-indigo-50 border border-indigo-200 px-3 py-1 rounded-full inline-block mb-3">
+        Casos de Éxito UVASOFT
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight mb-4">
+        Empresas reales que transformaron su operación con UVA ERP
+      </h2>
+      <p class="text-base text-gray-600">
+        Descubre cómo diferentes industrias en Colombia automatizan su día a día con <strong>UVA ERP</strong>, la solución desarrollada por <strong>UVASOFT</strong>.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {testimonials.map((t) => (
+        <div class="p-8 rounded-3xl bg-indigo-50/40 border border-indigo-100/70 shadow-sm shadow-indigo-100/60 hover:shadow-xl hover:shadow-indigo-200/50 hover:border-indigo-300 hover:bg-white transition-all duration-300 flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <!-- Estrellas -->
+              <div class="flex items-center gap-1 text-amber-400">
+                {[...Array(t.rating)].map(() => (
+                  <Star class="w-4 h-4 fill-amber-400" />
+                ))}
+              </div>
+              <span class="text-[10px] font-black uppercase tracking-wider text-indigo-700 bg-indigo-100/70 px-2 py-0.5 rounded-full">
+                {t.sector}
+              </span>
+            </div>
+
+            <!-- Cita -->
+            <p class="text-xs sm:text-sm text-gray-700 leading-relaxed mb-6 font-normal">
+              "{t.content}"
+            </p>
+          </div>
+
+          <!-- Autor -->
+          <div class="flex items-center gap-3.5 pt-6 border-t border-indigo-100/60">
+            <img
+              src={t.avatar}
+              alt={t.name}
+              class="w-11 h-11 rounded-full object-cover border-2 border-indigo-100 shadow-sm shadow-indigo-100"
+            />
+            <div>
+              <p class="text-xs font-black text-gray-900">{t.name}</p>
+              <p class="text-[11px] font-bold text-indigo-700">{t.role}</p>
+              <p class="text-[10px] text-gray-400">{t.company}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

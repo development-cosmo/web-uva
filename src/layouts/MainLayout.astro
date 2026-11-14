@@ -1,0 +1,45 @@
+---
+import '@/styles/global.css';
+import UvaNavbar from '@/components/uva/UvaNavbar';
+import UvaFooter from '@/components/uva/UvaFooter.astro';
+import SEOHead from '@/components/seo/SEOHead.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: 'website' | 'article';
+  schema?: Record<string, any>;
+}
+
+const { title, description, image, type, schema } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es-CO" class="h-full scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <SEOHead
+      title={title}
+      description={description}
+      image={image}
+      type={type}
+      schema={schema}
+    />
+  </head>
+  <body class="flex flex-col min-h-screen bg-white text-gray-900 selection:bg-indigo-100 selection:text-indigo-900 font-sans">
+    <!-- Navbar oficial UVA SOFT & UVA ERP flotando transparente sobre el video -->
+    <UvaNavbar client:load />
+
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <!-- Footer oficial UVA SOFT -->
+    <UvaFooter />
+  </body>
+</html>

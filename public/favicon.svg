@@ -1,0 +1,55 @@
+<svg viewBox="0 0 160 180" width="160" height="180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Bisel metálico perimetral -->
+    <linearGradient id="grape-metal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="40%" stop-color="#cbd5e1" />
+      <stop offset="70%" stop-color="#64748b" />
+      <stop offset="100%" stop-color="#334155" />
+    </linearGradient>
+    <!-- Relleno gema violeta / mora imperial -->
+    <linearGradient id="grape-fill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f472b6" />
+      <stop offset="40%" stop-color="#c084fc" />
+      <stop offset="100%" stop-color="#7e22ce" />
+    </linearGradient>
+    <!-- Sombra de suelo / proyección tridimensional -->
+    <radialGradient id="grape-ground" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6b21a8" stop-opacity="0.22" />
+      <stop offset="60%" stop-color="#a855f7" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#c084fc" stop-opacity="0" />
+    </radialGradient>
+    <filter id="grape-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.35" />
+    </filter>
+  </defs>
+  <g transform="translate(-6, 0)">
+    <!-- Sombra proyectada inferior -->
+    <ellipse cx="86" cy="172" rx="48" ry="7" fill="url(#grape-ground)" />
+    <!-- Hoja y tallo -->
+    <path
+      d="M 80 30 C 80 15, 95 18, 100 12 C 102 10, 95 8, 85 10 C 80 11, 78 18, 78 25 Z"
+      fill="url(#grape-metal)"
+      filter="url(#grape-shadow)"
+    />
+    <rect x="78" y="24" width="4" height="12" rx="2" fill="url(#grape-metal)" />
+    <!-- Uva 1 (Superior Izquierda) -->
+    <polygon points="46,45 66,33 86,45 86,67 66,79 46,67" fill="url(#grape-metal)" />
+    <polygon points="49,47 66,37 83,47 83,65 66,75 49,65" fill="url(#grape-fill)" />
+    <!-- Uva 2 (Superior Centro) -->
+    <polygon points="76,62 96,50 116,62 116,84 96,96 76,84" fill="url(#grape-metal)" />
+    <polygon points="79,64 96,54 113,64 113,82 96,92 79,82" fill="url(#grape-fill)" />
+    <!-- Uva 3 (Superior Derecha) -->
+    <polygon points="106,45 126,33 146,45 146,67 126,79 106,67" fill="url(#grape-metal)" />
+    <polygon points="109,47 126,37 143,47 143,65 126,75 109,65" fill="url(#grape-fill)" />
+    <!-- Uva 4 (Media Izquierda) -->
+    <polygon points="56,86 76,74 96,86 96,108 76,120 56,108" fill="url(#grape-metal)" />
+    <polygon points="59,88 76,78 93,88 93,106 76,116 59,106" fill="url(#grape-fill)" />
+    <!-- Uva 5 (Media Derecha) -->
+    <polygon points="86,103 106,91 126,103 126,125 106,137 86,125" fill="url(#grape-metal)" />
+    <polygon points="89,105 106,95 123,105 123,123 106,133 89,123" fill="url(#grape-fill)" />
+    <!-- Uva 6 (Punta Inferior) -->
+    <polygon points="66,128 86,116 106,128 106,150 86,162 66,150" fill="url(#grape-metal)" />
+    <polygon points="69,130 86,120 103,130 103,148 86,158 69,148" fill="url(#grape-fill)" />
+  </g>
+</svg>

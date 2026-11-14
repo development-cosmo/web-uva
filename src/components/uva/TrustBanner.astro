@@ -1,0 +1,44 @@
+---
+const speedMetrics = [
+  {
+    value: '0.28 seg',
+    label: 'Velocidad Motor UVA ERP',
+    note: 'Facturación, Kardex y contabilidad en un clic',
+    accent: 'text-[#7C3AED]',
+  },
+  {
+    value: 'Ilimitado',
+    label: 'Bodegas, Sucursales y Admins',
+    note: 'Crece sin cobros ocultos por sede adicional',
+    accent: 'text-[#3366CC]',
+  },
+  {
+    value: '$66.900',
+    label: 'Plan Básico Anual / mes',
+    note: '6 módulos fundamentales ($98.825 en plan mensual)',
+    accent: 'text-[#1E3047]',
+  },
+  {
+    value: '$0 COP',
+    label: 'Módulos Adicionales (1er Año)',
+    note: 'Gratis todo el primer año pagando el plan anual',
+    accent: 'text-emerald-600',
+  },
+];
+---
+
+<section class="py-10 bg-white border-b border-indigo-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {speedMetrics.map((m) => (
+        <div class="bg-indigo-50/40 border border-indigo-100 hover:border-[#7C3AED]/50 rounded-2xl p-5 transition-all hover:-translate-y-0.5 shadow-sm shadow-indigo-900/5">
+          <p class={`font-display text-3xl sm:text-4xl font-black tracking-tight mb-1 italic ${m.accent}`}>
+            {m.value}
+          </p>
+          <p class="text-sm font-extrabold text-[#1E3047] mb-0.5">{m.label}</p>
+          <p class="text-xs text-gray-500">{m.note}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

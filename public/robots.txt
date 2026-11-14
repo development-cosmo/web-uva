@@ -1,0 +1,21 @@
+# Reglas de indexación y acceso para bots
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+# Rastreabilidad para LLMs y Motores de IA
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+
+User-agent: Google-Extended
+Allow: /
+
+# Sitemap
+Sitemap: https://www.tudominio.com/sitemap-index.xml
+

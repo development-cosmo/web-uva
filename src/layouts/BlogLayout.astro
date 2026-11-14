@@ -1,0 +1,126 @@
+---
+import MainLayout from './MainLayout.astro';
+import { Calendar, User, ArrowLeft, Clock } from 'lucide-react';
+
+export interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  author: {
+    name: string;
+    role: string;
+    avatar?: string;
+  };
+  category: string;
+  tags: string[];
+  image: string;
+}
+
+const { title, description, pubDate, author, category, tags, image } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('es-ES', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(pubDate);
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline: title,
+  description: description,
+  image: image,
+  datePublished: pubDate.toISOString(),
+  author: {
+    '@type': 'Person',
+    name: author.name,
+    jobTitle: author.role,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'UVA Tech Solutions',
+    logo: 'https://www.tudominio.com/favicon.svg',
+  },
+  keywords: tags.join(', '),
+};
+---
+
+<MainLayout
+  title={title}
+  description={description}
+  image={image}
+  type="article"
+  schema={articleSchema}
+>
+  <article class="py-16 md:py-24">
+    <!-- Encabezado de Artículo -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+      <a
+        href="/blog/"
+        class="inline-flex items-center gap-2 text-sm text-primary-600 hover:text-primary-700 font-medium mb-8 group"
+      >
+        <ArrowLeft class="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+        Volver a todos los artículos
+      </a>
+
+      <div class="flex items-center gap-3 mb-6">
+        <span class="px-3 py-1 bg-primary-50 text-primary-700 text-xs font-semibold rounded-full uppercase tracking-wider">
+          {category}
+        </span>
+        <span class="text-gray-400">•</span>
+        <div class="flex items-center gap-1.5 text-xs text-gray-500">
+          <Calendar class="w-3.5 h-3.5" />
+          <time datetime={pubDate.toISOString()}>{formattedDate}</time>
+        </div>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight mb-8">
+        {title}
+      </h1>
+
+      <!-- Autor Card -->
+      <div class="flex items-center gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100">
+        {author.avatar && (
+          <img
+            src={author.avatar}
+            alt={author.name}
+            class="w-12 h-12 rounded-full object-cover border border-gray-200"
+          />
+        )}
+        <div>
+          <p class="text-sm font-bold text-gray-900">{author.name}</p>
+          <p class="text-xs text-gray-500">{author.role}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Imagen destacada -->
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+      <img
+        src={image}
+        alt={title}
+        class="w-full h-80 md:h-[450px] object-cover rounded-3xl shadow-lg"
+      />
+    </div>
+
+    <!-- Contenido del Artículo en Markdown -->
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-lg prose-indigo prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary-600 hover:prose-a:text-primary-700">
+      <slot />
+
+      <!-- Etiquetas -->
+      <div class="not-prose pt-12 mt-12 border-t border-gray-200">
+        <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">
+          Etiquetas del tema
+        </p>
+        <div class="flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-lg">
+              #{tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </article>
+</MainLayout>
+

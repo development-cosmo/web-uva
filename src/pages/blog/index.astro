@@ -1,0 +1,103 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+import { Calendar, ArrowRight, User } from 'lucide-react';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+
+const categories = [...new Set(posts.map((p) => p.data.category))];
+---
+
+<MainLayout
+  title="Blog Técnico y Arquitectura Web"
+  description="Artículos de ingeniería sobre Astro, TypeScript, React, Core Web Vitals y optimización GEO para motores de IA."
+>
+  <div class="py-20 md:py-28 bg-gradient-to-b from-primary-50/40 via-white to-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-12">
+        <span class="px-3.5 py-1.5 rounded-full bg-primary-100 text-primary-700 text-xs font-bold uppercase tracking-wider inline-block mb-4">
+          Publicaciones Técnicas
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight mb-6">
+          Ideas, arquitectura y estándares de la web moderna.
+        </h1>
+        <p class="text-lg text-gray-600 leading-relaxed">
+          Guías prácticas, análisis de arquitectura de software y mejores prácticas sobre cómo construir sitios web rápidos y accesibles.
+        </p>
+      </div>
+
+      <!-- Categorías -->
+      <div class="flex flex-wrap items-center gap-2 mb-12">
+        <span class="text-xs font-semibold text-gray-400 mr-2 uppercase">Filtrar por:</span>
+        <span class="px-3.5 py-1.5 rounded-full bg-primary-600 text-white text-xs font-semibold cursor-pointer">
+          Todos los artículos
+        </span>
+        {categories.map((cat) => (
+          <span class="px-3.5 py-1.5 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-semibold transition cursor-pointer">
+            {cat}
+          </span>
+        ))}
+      </div>
+
+      <!-- Grid de Artículos -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.map((post) => (
+          <article class="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
+            <div class="relative overflow-hidden h-52">
+              <img
+                src={post.data.image}
+                alt={post.data.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-gray-800">
+                {post.data.category}
+              </div>
+            </div>
+
+            <div class="p-8 flex flex-col justify-between flex-grow">
+              <div>
+                <div class="flex items-center gap-2 text-xs text-gray-400 mb-3">
+                  <Calendar class="w-3.5 h-3.5" />
+                  <time datetime={post.data.pubDate.toISOString()}>
+                    {post.data.pubDate.toLocaleDateString('es-ES', { month: 'long', day: 'numeric', year: 'numeric' })}
+                  </time>
+                </div>
+
+                <h2 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors leading-snug">
+                  {post.data.title}
+                </h2>
+                <p class="text-xs text-gray-600 leading-relaxed mb-6 line-clamp-3">
+                  {post.data.description}
+                </p>
+              </div>
+
+              <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                  {post.data.author.avatar && (
+                    <img
+                      src={post.data.author.avatar}
+                      alt={post.data.author.name}
+                      class="w-7 h-7 rounded-full object-cover"
+                    />
+                  )}
+                  <span class="text-xs font-semibold text-gray-700">{post.data.author.name}</span>
+                </div>
+
+                <a
+                  href={`/blog/${post.slug}/`}
+                  class="inline-flex items-center gap-1 text-xs font-bold text-primary-600 group-hover:text-primary-700"
+                >
+                  Leer
+                  <ArrowRight class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</MainLayout>
+

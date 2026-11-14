@@ -1,0 +1,76 @@
+---
+import { getCollection } from 'astro:content';
+import { ArrowRight, ExternalLink } from 'lucide-react';
+
+const projects = (await getCollection('projects')).slice(0, 3);
+---
+
+<section class="py-20 md:py-28 bg-gray-50/50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-wider text-accent-600 mb-2">
+          Portafolio Seleccionado
+        </p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+          Casos de Éxito y Resultados Verificables
+        </h2>
+      </div>
+      <a
+        href="/proyectos/"
+        class="mt-4 md:mt-0 inline-flex items-center gap-2 text-sm font-semibold text-primary-600 hover:text-primary-700 group"
+      >
+        Explorar todos los proyectos
+        <ArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {projects.map((project) => (
+        <article class="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
+          <div class="relative overflow-hidden h-52">
+            <img
+              src={project.data.image}
+              alt={project.data.title}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-semibold text-gray-800">
+              {project.data.category}
+            </div>
+          </div>
+
+          <div class="p-8 flex flex-col justify-between flex-grow">
+            <div>
+              <p class="text-xs text-gray-400 font-medium mb-1">{project.data.client} • {project.data.year}</p>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors">
+                {project.data.title}
+              </h3>
+              <p class="text-xs text-gray-600 leading-relaxed mb-6 line-clamp-2">
+                {project.data.description}
+              </p>
+
+              <!-- Métricas clave -->
+              <div class="grid grid-cols-2 gap-4 py-4 mb-6 border-y border-gray-100 bg-gray-50/50 rounded-xl px-4">
+                {project.data.metrics.slice(0, 2).map((m) => (
+                  <div>
+                    <span class="block text-lg font-extrabold text-primary-600">{m.value}</span>
+                    <span class="block text-[10px] uppercase tracking-wider text-gray-500 font-medium">{m.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <a
+              href={`/proyectos/${project.slug}/`}
+              class="inline-flex items-center justify-between text-xs font-bold text-primary-600 group-hover:text-primary-700 pt-2"
+            >
+              <span>Ver caso de estudio</span>
+              <ArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+

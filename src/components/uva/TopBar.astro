@@ -1,0 +1,42 @@
+---
+import { Phone, MessageCircle, HelpCircle, ShieldCheck } from 'lucide-react';
+---
+
+<div class="bg-[#1E3047] text-indigo-100 text-xs py-2 px-4 sm:px-6 lg:px-10 border-b border-[#C0C0C0]/25 hidden sm:block whitespace-nowrap">
+  <div class="max-w-[1440px] mx-auto flex items-center justify-between gap-4">
+    <!-- País e Información DIAN -->
+    <div class="flex items-center gap-6 shrink-0 whitespace-nowrap">
+      <div class="flex items-center gap-2 group cursor-pointer hover:text-white transition shrink-0 whitespace-nowrap">
+        <span class="text-sm">🇨🇴</span>
+        <span class="font-bold text-white">Colombia</span>
+        <span class="text-[10px] text-white bg-[#3366CC] border border-white/20 px-2 py-0.5 rounded-full font-bold flex items-center gap-1 whitespace-nowrap shrink-0">
+          <ShieldCheck class="w-3 h-3 text-white shrink-0" />
+          Habilitado DIAN 2025
+        </span>
+      </div>
+
+      <div class="hidden md:flex items-center gap-2 text-indigo-100 whitespace-nowrap shrink-0">
+        <Phone class="w-3.5 h-3.5 text-[#C0C0C0] shrink-0" />
+        <span>Línea Nacional UVA SOFT: <strong class="text-white">(601) 745 8080 / 300 912 4040</strong></span>
+      </div>
+    </div>
+
+    <!-- Links de Soporte y Acceso -->
+    <div class="flex items-center gap-5 shrink-0 whitespace-nowrap">
+      <a href="#modulos" class="hover:text-white transition hidden lg:inline font-medium whitespace-nowrap">
+        Arquitectura Modular UVA ERP
+      </a>
+      <a href="https://api.whatsapp.com" target="_blank" rel="noopener" class="hover:text-white transition flex items-center gap-1.5 font-medium whitespace-nowrap shrink-0">
+        <MessageCircle class="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+        <span>Asesor por WhatsApp</span>
+      </a>
+      <a href="#contacto" class="hover:text-white transition flex items-center gap-1.5 font-medium whitespace-nowrap shrink-0">
+        <HelpCircle class="w-3.5 h-3.5 text-[#C0C0C0] shrink-0" />
+        <span>Soporte Técnico</span>
+      </a>
+      <a href="#registro" class="text-white font-bold hover:bg-[#7C3AED] transition bg-[#3366CC] px-3 py-1 rounded-lg border border-white/20 shadow-sm whitespace-nowrap shrink-0">
+        Ingreso Clientes
+      </a>
+    </div>
+  </div>
+</div>
